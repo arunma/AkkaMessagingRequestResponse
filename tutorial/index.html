@@ -1,0 +1,166 @@
+<body>
+<div>
+    <h2>Akka Monitoring with Kamon</h2>
+
+    <p>
+        This activator shows you how to monitor your akka applications with <a href="http://kamon.io/">kamon</a>.
+        The original article with some more details can be found <a href="http://mukis.de/pages/monitoring-akka-with-kamon/">here</a>.
+        The tutorial has the following structure:        
+        <ul>
+            <li>Run it</li>
+            <li>The big picture</li>
+            <li>Kamon</li>
+            <li>The Application</li>
+        </ul>
+    </p>
+
+</div>
+
+<div>
+    <h2>Run it</h2>
+    <p>
+    If you just want to play around. Read the next chapter if you want to know more details.
+    </p>
+    
+    <p>
+        Open two terminals. The first one will start your monitoring backend, which is compressed into one
+        single docker container. If you have a running statsd infrastructure you don't need this, but have
+        to change the configuration.
+        <pre><code>docker run -v /etc/localtime:/etc/localtime:ro -p 80:80 -p 8125:8125/udp -p 8126:8126 -p 8083:8083 -p 8086:8086 -p 8084:8084 --name kamon-grafana-dashboard muuki88/grafana_graphite:latest</code></pre>
+        
+        In the second terminal start the example application with
+        <pre><code>sbt run</code></pre>
+        
+        Now you have your monitoring running and an application which generates some load.
+        Open <a href="http://localhost">localhost</a> and play around with the Grafana Dashboard.
+    </p>    
+</div>
+
+<div>
+<h2>The Big Picture</h2>
+
+    <p>
+    First of all, when we are done we will have this infrastructure running
+
+    <a href="http://mukis.de/pages/wp-content/uploads/2014/09/akka-kamon-flowcharts-single.png"><img src="http://mukis.de/pages/wp-content/uploads/2014/09/akka-kamon-flowcharts-single-1024x401.png" alt="akka-kamon-flowcharts-single" /></a>
+
+    Thanks to docker we don't have to configure anything on the right hand-side to get started.
+    </p>
+    
+    <p>
+    The application contains two message generators: one for peaks and one for constant load. Two types of
+    actors handle these messages. One creates random numbers and the child actors calculate the prime factors.
+    </p>
+</div>
+
+<div>
+<h2>Kamon</h2>
+<div>
+    Starting on the left of the picture. Kamon is a library which uses AspectJ to hook into methods calls
+    made by the ActorSystem and record events of different types. The <a title="Kamon Docs" href="http://kamon.io/introduction/get-started/" target="_blank">Kamon docs</a> 
+    have some big gaps, but you can get a feeling of what is possible. I will not make any special configuration and just use the
+    defaults to get started as fast as possible.
+</div>
+
+<div>
+    <h2>Kamon Dependencies and sbt-aspectj</h2>
+    <p>
+    First we add the kamon dependencies via
+    <pre><code>val kamonVersion = "0.3.4"
+
+libraryDependencies ++= Seq(
+  "com.typesafe.akka" %% "akka-actor" % "2.3.5",
+  "io.kamon" %% "kamon-core" % kamonVersion,
+  "io.kamon" %% "kamon-statsd" % kamonVersion,
+  "io.kamon" %% "kamon-log-reporter" % kamonVersion,
+  "io.kamon" %% "kamon-system-metrics" % kamonVersion,
+  "org.aspectj" % "aspectjweaver" % "1.8.1"
+)
+    </code></pre>
+    Next we configure the <a title="SBT AspectJ Plugin" href="https://github.com/sbt/sbt-aspectj" target="_blank">sbt-aspectj-plugin</a> to weave our code at compile time.
+    First add the plugin to your <strong>plugins.sbt</strong>
+    <pre><code>addSbtPlugin("com.typesafe.sbt" % "sbt-aspectj" % "0.9.4")</code></pre>
+    </p>
+    <p>
+    And now we configure it
+    <pre><code>aspectjSettings
+
+javaOptions &lt;++= AspectjKeys.weaverOptions in Aspectj
+
+// when you call "sbt run" aspectj weaving kicks in
+fork in run := true
+    </code></pre>
+    </p>
+    <p>
+    Last step is to configure what should be recorded. Open up your <strong>application.conf</strong> where your akka configuration resides. Kamon uses the <strong>kamon</strong> configuration key.
+    <pre><code>kamon {
+
+  # What should be recorder
+  metrics {
+    filters = [
+      {
+        # actors we should be monitored
+        actor {
+          includes = [ "user/*", "user/worker-*" ] # a list of what should be included
+          excludes = [ "system/*" ]                # a list of what should be excluded
+        }
+      },
+
+      # not sure about this yet. Looks important
+      {
+        trace {
+          includes = [ "*" ]
+          excludes = []
+        }
+      }
+    ]
+  }
+  
+  # ~~~~~~ StatsD configuration ~~~~~~~~~~~~~~~~~~~~~~~~
+
+  statsd {
+    # Hostname and port in which your StatsD is running. Remember that StatsD packets are sent using UDP and
+    # setting unreachable hosts and/or not open ports wont be warned by the Kamon, your data wont go anywhere.
+    hostname = "127.0.0.1"
+    port = 8125
+
+    # Interval between metrics data flushes to StatsD. It's value must be equal or greater than the
+    # kamon.metrics.tick-interval setting.
+    flush-interval = 1 second
+
+    # Max packet size for UDP metrics data sent to StatsD.
+    max-packet-size = 1024 bytes
+
+    # Subscription patterns used to select which metrics will be pushed to StatsD. Note that first, metrics
+    # collection for your desired entities must be activated under the kamon.metrics.filters settings.
+    includes {
+      actor       = [ "*" ]
+      trace       = [ "*" ]
+      dispatcher  = [ "*" ]
+    }
+
+    simple-metric-key-generator {
+      # Application prefix for all metrics pushed to StatsD. The default namespacing scheme for metrics follows
+      # this pattern:
+      #    application.host.entity.entity-name.metric-name
+      application = "yourapp"
+    }
+  }
+}
+    </code></pre>
+    Our app is ready to run. But first, we deploy our monitoring backend.
+    </p>
+</div>
+<h2>Monitoring Backend</h2>
+As we saw in the first picture, we need a lot of stuff running in order to store our log events. The libraries and components used are most likely reasonable and you (or the more Ops than Dev guy) will have to configure it. But for the moment we just fire them up all at once in a simple docker container. I don't put them in detached mode so I see what's going on.
+<pre><code>docker run -v /etc/localtime:/etc/localtime:ro -p 80:80 -p 8125:8125/udp -p 8126:8126 -p 8083:8083 -p 8086:8086 -p 8084:8084 --name kamon-grafana-dashboard muuki88/grafana_graphite:latest
+</code></pre>
+<a title="My Docker Image" href="https://github.com/muuki88/docker-grafana-graphite" target="_blank">My image</a> is based on a <a href="https://github.com/cazcade/docker-grafana-graphite" target="_blank">fork</a> from the <a href="https://github.com/kamon-io/docker-grafana-graphite" target="_blank">original docker image </a>by kamon.
+<h2>Run and build the Dashboard</h2>
+Now go to your running Grafana instance at <a title="Localhost" href="http://localhost" target="_blank">localhost</a>. You see a default, which we will use to display
+the average time-in-mailbox. Click on the title of the graph ( <em>First Graph (click title to edit</em> ). Now select the metrics like this:
+
+<a href="http://mukis.de/pages/wp-content/uploads/2014/09/akka-kamon-grafana.jpg"><img src="http://mukis.de/pages/wp-content/uploads/2014/09/akka-kamon-grafana-1024x437.jpg" alt="akka-kamon-grafana" /></a>
+
+
+</body>
