@@ -1,4 +1,4 @@
-[0m[[0minfo[0m] [0mUpdating {file:/Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/}akkamessagingreqres...[0m
+[0m[[0minfo[0m] [0mUpdating {file:/Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/}akkamessagingrequestresponse...[0m
 [0m[[0mdebug[0m] [0m:: resolving dependencies :: akkamessagingreqres#akkamessagingreqres_2.11;2.3.5[0m
 [0m[[0mdebug[0m] [0m	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool, aspectj][0m
 [0m[[0mdebug[0m] [0m	validate = true[0m
@@ -7,7 +7,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 [compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies akkamessagingreqres#akkamessagingreqres_2.11;2.3.5->org.scala-lang#scala-library;2.11.2 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.11.2 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@5d5df07c[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@7c3e793d[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.11.2[0m
 [0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#scala-library;2.11.2[0m
 [0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.11.2 in sbt-chain[0m
@@ -1538,7 +1538,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies akkamessagingreqres#akkamessagingreqres_2.11;2.3.5->org.aspectj#aspectjweaver;1.7.3 [aspectj->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies akkamessagingreqres#akkamessagingreqres_2.11;2.3.5->org.aspectj#aspectjweaver;1.7.3 [aspectj->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies akkamessagingreqres#akkamessagingreqres_2.11;2.3.5->org.aspectj#aspectjweaver;1.7.3 [aspectj->master][0m
-[0m[[0mdebug[0m] [0m	resolved ivy file produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/akkamessagingreqres/akkamessagingreqres_2.11/2.3.5/resolved.xml.xml[0m
+[0m[[0mdebug[0m] [0m	resolved ivy file produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/akkamessagingreqres/akkamessagingreqres_2.11/2.3.5/resolved.xml.xml[0m
 [0m[[0mdebug[0m] [0m:: downloading artifacts ::[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-library;2.11.2!scala-library.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.typesafe.akka#akka-actor_2.11;2.3.4!akka-actor_2.11.jar[0m
@@ -1567,20 +1567,20 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] jline#jline;2.12!jline.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.aspectj#aspectjtools;1.7.3!aspectjtools.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.aspectj#aspectjweaver;1.7.3!aspectjweaver.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 1494ms :: artifacts dl 32ms[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 compile produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-compile.xml[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 runtime produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-runtime.xml[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 test produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-test.xml[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 provided produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-provided.xml[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 optional produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-optional.xml[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 compile-internal produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-compile-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 runtime-internal produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-runtime-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 test-internal produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-test-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 plugin produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-plugin.xml[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 sources produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-sources.xml[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 docs produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-docs.xml[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 pom produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-pom.xml[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 scala-tool produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 aspectj produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingReqRes/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-aspectj.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (1494ms resolve - 32ms download)[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 1578ms :: artifacts dl 48ms[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 compile produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-compile.xml[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 runtime produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-runtime.xml[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 test produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-test.xml[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 provided produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-provided.xml[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 optional produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-optional.xml[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 compile-internal produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-compile-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 runtime-internal produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-runtime-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 test-internal produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-test-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 plugin produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-plugin.xml[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 sources produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-sources.xml[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 docs produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-docs.xml[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 pom produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-pom.xml[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 scala-tool produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-scala-tool.xml[0m
+[0m[[0mdebug[0m] [0m	report for akkamessagingreqres#akkamessagingreqres_2.11;2.3.5 aspectj produced in /Users/Gabriel/Projects/ScalaProjects/AkkaMessagingRequestResponse/target/resolution-cache/reports/akkamessagingreqres-akkamessagingreqres_2.11-aspectj.xml[0m
+[0m[[0mdebug[0m] [0m	resolve done (1578ms resolve - 48ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m

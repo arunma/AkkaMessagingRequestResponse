@@ -4,7 +4,7 @@
 		module="akkamessagingreqres_2.11"
 		revision="2.3.5"
 		status="integration"
-		publication="20141004180206"
+		publication="20141004183153"
 	>
 		<description>
 		AkkaMessagingReqRes

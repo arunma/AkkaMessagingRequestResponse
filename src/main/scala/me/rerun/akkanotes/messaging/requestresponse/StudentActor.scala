@@ -3,15 +3,16 @@ package me.rerun.akkanotes.messaging.requestresponse
 import akka.actor.Actor
 import akka.actor.ActorLogging
 import me.rerun.akkanotes.messaging.protocols.TeacherProtocol._
-import me.rerun.akkanotes.messaging.protocols.StudentProtocol._;
+import me.rerun.akkanotes.messaging.protocols.StudentProtocol._
 import akka.actor.Props
+import akka.actor.ActorRef
 
 /*
  * The Student Actor class. 
  * 
  */
 
-class StudentActor extends Actor with ActorLogging {
+class StudentActor (teacherActorRef:ActorRef) extends Actor with ActorLogging {
 
   def receive = {
 
@@ -21,8 +22,7 @@ class StudentActor extends Actor with ActorLogging {
      * The teacher actor on receipt of the QuoteRequest responds with a QuoteResponse 
      */
     case InitSignal=> {
-      val teacherRef=context.system.actorOf(Props[TeacherActor], "teacherActor") //Create Teacher Actor
-      teacherRef!QuoteRequest
+      teacherActorRef!QuoteRequest
     }
     
     /*
