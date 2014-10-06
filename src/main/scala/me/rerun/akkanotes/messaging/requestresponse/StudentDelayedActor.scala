@@ -24,7 +24,8 @@ class StudentDelayedActor (teacherActorRef:ActorRef) extends Actor with ActorLog
      */
     case InitSignal=> {
       import context.dispatcher
-      context.system.scheduler.scheduleOnce(5 seconds, teacherActorRef, QuoteRequest)
+      //context.system.scheduler.scheduleOnce(5 seconds, teacherActorRef, QuoteRequest)
+      context.system.scheduler.schedule(0 seconds, 5 seconds, teacherActorRef, QuoteRequest)
       //teacherActorRef!QuoteRequest
     }
     

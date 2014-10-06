@@ -69,7 +69,7 @@ class RequestResponseTest extends TestKit(ActorSystem("TestUniversityMessageSyst
       EventFilter.info (start="Printing from Student Actor", occurrences=1).intercept{
         studentRef!InitSignal
       }
-
+      
     }
 
   }
@@ -86,6 +86,7 @@ class RequestResponseTest extends TestKit(ActorSystem("TestUniversityMessageSyst
       EventFilter.info (start="Printing from Student Actor", occurrences=1).intercept{
           studentRef!InitSignal
       }
+      
     }
 
   }
